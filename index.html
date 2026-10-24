@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Registration</title>
+</head>
+<body>
+
+<h2>Student Registration Form</h2>
+
+<form action="/register" method="POST" onsubmit="return validateForm()">
+
+    Name:
+    <input type="text" id="name" name="name" required>
+    <br><br>
+
+    Age:
+    <input type="number" id="age" name="age" required>
+    <br><br>
+
+    Percentage:
+    <input type="number" id="per" name="percentage"
+           min="0" max="100" step="0.01" required>
+    <br><br>
+
+    Stream:
+    <select id="stream" name="stream" required>
+        <option value="">Select Stream</option>
+        <option value="Science">Science</option>
+        <option value="Commerce">Commerce</option>
+        <option value="Arts">Arts</option>
+    </select>
+    <br><br>
+
+    <button type="submit">Register</button>
+
+</form>
+
+<script>
+function validateForm() {
+    var name = document.getElementById("name").value.trim();
+    var ageText = document.getElementById("age").value;
+    var age = Number(ageText);
+    var perText = document.getElementById("per").value;
+    var per = Number(perText);
+    var stream = document.getElementById("stream").value;
+
+    if (name.length < 2) {
+        alert("Enter a valid name");
+        return false;
+    }
+
+    if (ageText === "" || age < 5 || age > 100) {
+        alert("Enter age between 5 and 100");
+        return false;
+    }
+
+    if (perText === "" || per < 0 || per > 100) {
+        alert("Enter percentage between 0 and 100");
+        return false;
+    }
+
+    if (stream === "") {
+        alert("Please select a stream");
+        return false;
+    }
+
+    return true;
+}
+</script>
+
+</body>
+</html>
